@@ -4,7 +4,7 @@
 #include  "solution.hpp"
 
 static void printOutcome(bool ok, const std::string& name) {
-    std::cout << name << :  << (ok ?  PASÓ : FALLÓ) << \n;
+    std::cout << name << ": " << (ok ?  "PASÓ" : "FALLÓ") << std::endl;
 }
 
 static bool sameTriplets(std::vector<std::vector<int>> a, std::vector<std::vector<int>> b) {
