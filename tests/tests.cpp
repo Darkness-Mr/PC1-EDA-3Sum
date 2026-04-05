@@ -33,8 +33,8 @@ int main() {
     bool okBrute = sameTriplets(resultBrute, expected);
     bool okOpt = sameTriplets(resultOpt, expected);
 
-    printOutcome(okBrute, threeSumBrute);
-    printOutcome(okOpt, threeSum);
+    printOutcome(okBrute, "threeSumBrute");
+    printOutcome(okOpt, "threeSum");
 
-    return (okBrute ; okOpt) ? 0 : 1;
+    return (okBrute && okOpt) ? 0 : 1;
 }
