@@ -51,6 +51,14 @@ Usamos $O(1)$ espacio adicional, aparte del resultado. Solo empleamos variables 
 
 ### 3. Uso de Inteligencia Artificial (Copilot)
 * Se aceptaron sugerencias de Copilot para la implementación del CMakeLists.txt , correccion de faltas ortograficas en el README.md y correccion de errores logicos, como la declaración incorrecta en tests.cpp de resultadoB y resultadoO como bools en lugar de vectores, lo que provocaba errores de tipos. Se decidió aceptar estas propuestas en CMakeLists.txt para facilitar la compilación, en tests.cpp y main.cpp para corregir errores lógicos y en README.md para hacer un archivo de mejor lectura. 
-* **Correctitud e Invariante de Progreso:** [Explicar aquí el invariante del bucle].
+
+### 4. Instrucciones de Compilación y Ejecución
+Para compilar y correr el proyecto usando CMake desde la terminal:
+1. `mkdir build && cd build`
+2. `cmake ..`
+3. `make`
+4. Ejecutar el programa principal: `./main`
+5. Ejecutar las pruebas: `ctest --output-on-failure`
+
 * **Análisis de Complejidad Temporal:** [Explicar detalladamente por qué logramos $O(n^2)$].
 * **Análisis de Complejidad Espacial:** [Detallar si utilizamos memoria extra y por qué].
