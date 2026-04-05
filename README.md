@@ -4,7 +4,7 @@
 * Marco Antonio Huamani Bonifacio (20232741D)
 * Yaimar Alexis Cabello Quevedo (20244712D)
 
-## El Problema: 15. 3Sum
+## El Problema: 14. 3Sum
 * **Enlace:** [LeetCode 15: 3Sum](https://leetcode.com/problems/3sum/description/)
 * **Enunciado:** Dado un arreglo de números enteros `nums`, debemos encontrar y devolver todos los tripletes `[nums[i], nums[j], nums[k]]` únicos (donde los índices `i`, `j` y `k` son distintos entre sí) cuya suma sea exactamente igual a `0`.
 * **Nuestro Objetivo:** Llevar la solución inicial bruta, que tiene un costo computacional de $O(n^3)$, hacia una solución óptima de $O(n^2)$ aplicando la técnica de ordenamiento combinada con dos punteros.
@@ -24,23 +24,33 @@ Hasta ahora, he configurado la estructura de carpetas que pide la rúbrica y he 
 3. **`src/main.cpp`:**
    * Nuestro archivo a ejecutar. 
    * Instancia la clase `Solution` y deja preparado el vector de prueba clásico de este problema en LeetCode: `{-1, 0, 1, 2, -1, -4}`.
-
-## Lo que puedes ir avanzando Yaimar
-
-1. **Implementar la Fuerza Bruta:** Escribe la lógica inicial de los 3 bucles anidados dentro de la función `threeSumBrute` en el archivo `solution.cpp`.
-3. **Escribir las Pruebas Base:** Configura el archivo `tests/tests.cpp` para validar que nuestro enfoque de feurza bruta arroja los resultados correctos. Recuerda aplicar el patrón AAA (Arrange-Act-Assert) para mantener el orden.
-
 ## 📋 Secciones Pendientes (Requerimientos de la Rúbrica)
 *(Nota: Iremos completando estas secciones conforme avancemos con el proyecto)*
 
 ### 1. Justificación del Algoritmo
-* **Correctitud e Invariante de Progreso:** [Explicar aquí el invariante del bucle].
-* **Análisis de Complejidad Temporal:** [Explicar detalladamente por qué logramos $O(n^2)$].
-* **Análisis de Complejidad Espacial:** [Detallar si utilizamos memoria extra y por qué].
+
+#### Correctitud e Invariante de Progreso
+El invariante del bucle principal asegura que al finalizar cada iteración de `i`, todos los tripletes únicos que tienen `nums[i]` como el elemento más pequeño ya han sido encontrados y añadidos al resultado. Esto evita procesar el mismo triplete múltiples veces.
+
+Dentro del bucle de dos punteros (`izquierda` y `derecha`), el invariante garantiza que para cada `i` fijo, se exploran todas las parejas posibles que suman `-nums[i]`, moviendo `izquierda` hacia la derecha si la suma es pequeña, y `derecha` hacia la izquierda si es grande. Se saltan duplicados para mantener unicidad, asegurando que no se omitan tripletes válidos ni se repitan.
+
+#### Análisis de Complejidad Temporal
+- Ordenar el arreglo: $O(n \log n)$.
+- Bucle principal de `i` (de 0 a n-3): $O(n)$.
+- Para cada `i`, bucle de dos punteros (`izquierda` a `derecha`): $O(n)$.
+- Total: $O(n \log n + n^2) = O(n^2)$.
+
+La versión bruta usa tres bucles anidados, resultando en $O(n^3)$.
+
+#### Análisis de Complejidad Espacial
+Usamos $O(1)$ espacio adicional, aparte del resultado. Solo empleamos variables temporales como `i`, `izquierda`, `derecha` y `obj` (unas pocas enteros). El arreglo se ordena in-place, sin copias ni estructuras auxiliares grandes. Si usáramos un set para evitar duplicados, sería $O(n)$, pero aquí evitamos eso con saltos de duplicados, manteniendo $O(1)$.
 
 ### 2. Reporte de Benchmark y Sanitización
 * **Resultados de Compilación (-O0, -Og, -O2, -Os):** [Resumen breve de los tiempos y rendimiento].
 * **Revisión de Memoria (ASan/UBSan):** [Confirmar la ausencia de fugas de memoria o comportamientos indefinidos].
 
 ### 3. Uso de Inteligencia Artificial (Copilot)
-* [Declarar aquí qué sugerencias de código brindadas por Copilot aceptamos, cuáles rechazamos y nuestros motivos].
+* Se aceptaron sugerencias de Copilot para la implementación del CMakeLists.txt , correccion de faltas ortograficas en el README.md y correccion de errores logicos, como la declaración incorrecta en tests.cpp de resultadoB y resultadoO como bools en lugar de vectores, lo que provocaba errores de tipos. Se decidió aceptar estas propuestas en CMakeLists.txt para facilitar la compilación, en tests.cpp y main.cpp para corregir errores lógicos y en README.md para hacer un archivo de mejor lectura. 
+* **Correctitud e Invariante de Progreso:** [Explicar aquí el invariante del bucle].
+* **Análisis de Complejidad Temporal:** [Explicar detalladamente por qué logramos $O(n^2)$].
+* **Análisis de Complejidad Espacial:** [Detallar si utilizamos memoria extra y por qué].
