@@ -63,6 +63,3 @@ Para compilar y correr el proyecto usando CMake desde la terminal:
 3. `make`
 4. Ejecutar el programa principal: `./main`
 5. Ejecutar las pruebas: `ctest --output-on-failure`
-
-* **Análisis de Complejidad Temporal:** [Explicar detalladamente por qué logramos $O(n^2)$].
-* **Análisis de Complejidad Espacial:** [Detallar si utilizamos memoria extra y por qué].
