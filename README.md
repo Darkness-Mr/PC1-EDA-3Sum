@@ -46,8 +46,21 @@ La versión bruta usa tres bucles anidados, resultando en $O(n^3)$.
 Usamos $O(1)$ espacio adicional, aparte del resultado. Solo empleamos variables temporales como `i`, `izquierda`, `derecha` y `obj` (unas pocas enteros). El arreglo se ordena in-place, sin copias ni estructuras auxiliares grandes. Si usáramos un set para evitar duplicados, sería $O(n)$, pero aquí evitamos eso con saltos de duplicados, manteniendo $O(1)$.
 
 ### 2. Reporte de Benchmark y Sanitización
-* **Resultados de Compilación (-O0, -Og, -O2, -Os):** [Resumen breve de los tiempos y rendimiento].
-* **Revisión de Memoria (ASan/UBSan):** [Confirmar la ausencia de fugas de memoria o comportamientos indefinidos].
+* **Resultados de Compilación (-O0, -Og, -O2, -Os):**
+===============
+Ejecutando 3Sum
+===============
+
+Resultado threeSumBrute:
+[-1, 0, 1]
+[-1, -1, 2]
+
+Resultado threeSum:
+[-1, -1, 2]
+[-1, 0, 1]
+
+* **Revisión de Memoria (ASan/UBSan):**
+* Compilamos correctamente nuestro programa con los sanitizeds correspondiente (ASan y UBSan) y al ejecutar todo fue exitoso ya que no detectamos fugas ni comportamiento indefinidos 
 
 ### 3. Uso de Inteligencia Artificial (Copilot)
 * Se aceptaron sugerencias de Copilot para la implementación del CMakeLists.txt , correccion de faltas ortograficas en el README.md y correccion de errores logicos, como la declaración incorrecta en tests.cpp de resultadoB y resultadoO como bools en lugar de vectores, lo que provocaba errores de tipos. Se decidió aceptar estas propuestas en CMakeLists.txt para facilitar la compilación, en tests.cpp y main.cpp para corregir errores lógicos y en README.md para hacer un archivo de mejor lectura. 
