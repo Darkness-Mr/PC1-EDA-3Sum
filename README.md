@@ -47,17 +47,8 @@ Usamos $O(1)$ espacio adicional, aparte del resultado. Solo empleamos variables 
 
 ### 2. Reporte de Benchmark y Sanitización
 * **Resultados de Compilación (-O0, -Og, -O2, -Os):**
-===============
-Ejecutando 3Sum
-===============
 
-Resultado threeSumBrute:
-[-1, 0, 1]
-[-1, -1, 2]
-
-Resultado threeSum:
-[-1, -1, 2]
-[-1, 0, 1]
+* En resumen la variantes mas optimizada es la -02. Lo explico más detallado en reports/optimization_report.md
 
 * **Revisión de Memoria (ASan/UBSan):**
 * Compilamos correctamente nuestro programa con los sanitizeds correspondiente (ASan y UBSan) y al ejecutar todo fue exitoso ya que no detectamos fugas ni comportamiento indefinidos 
