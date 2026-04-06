@@ -43,3 +43,18 @@ Resultado threeSum:
 [-1, 0, 1]
 
 ./main_Og  0,00s user 0,00s system 1% cpu 0,284 total
+
+* Ejecución de time ./main_O2:
+===============
+Ejecutando 3Sum
+===============
+
+Resultado threeSumBrute:
+[-1, 0, 1]
+[-1, -1, 2]
+
+Resultado threeSum:
+[-1, -1, 2]
+[-1, 0, 1]
+
+./main_O2  0,00s user 0,00s system 2% cpu 0,292 total
