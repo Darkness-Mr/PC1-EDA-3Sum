@@ -25,3 +25,15 @@ Each sample counts as 0.01 seconds.
  ```
  
 Como se observa, el reporte arroja "no time accumulated". Esto ocurre porque la ejecución del algoritmo con la muestra original fue tan rápida que no superó el umbral mínimo de 0.01 segundos que gprof necesita para registrar el tiempo.
+
+### Resultados del Benchmark (Librería chrono)
+Al ejecutar el benchmark con una muestra de $n = 500$, la medición precisa utilizando `<chrono>` arrojó los siguientes resultados, demostrando por qué `gprof` no pudo registrar la solución óptima (tomó menos de 10ms):
+
+```text
+--- Iniciando Benchmark de 3Sum ---
+Tamano de entrada (n) = 500 elementos.
+
+Tiempo Fuerza Bruta O(n^3): 10167.9 ms
+Tiempo Solucion Optima O(n^2): 4.3662 ms
+
+Mejora de rendimiento: La solucion optima es aprox 2328 veces mas rapida.
