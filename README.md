@@ -11,7 +11,7 @@
 * **Enunciado:** Dado un arreglo de números enteros `nums`, debemos encontrar y devolver todos los tripletes `[nums[i], nums[j], nums[k]]` únicos (donde los índices `i`, `j` y `k` son distintos entre sí) cuya suma sea exactamente igual a `0`.
 * **Nuestro Objetivo:** Llevar la solución inicial bruta, que tiene un costo computacional de $O(n^3)$, hacia una solución óptima de $O(n^2)$ aplicando la técnica de ordenamiento combinada con dos punteros.
 
-## Estado Actual del Proyecto (Avance de Marco)
+## Estado Actual del Proyecto
 
 Hasta ahora, he configurado la estructura de carpetas que pide la rúbrica y he dejado listos los archivos en `src/`. Todavía no he implementado la lógica del algoritmo; solo deje listos los (esqueletos) para asegurar que el proyecto compile sin problemas desde el inicio:
 
