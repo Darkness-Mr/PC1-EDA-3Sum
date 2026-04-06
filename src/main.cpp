@@ -16,8 +16,10 @@ void imprimir(const std::vector<std::vector<int>>& triplets, const std::string& 
 }
 
 int main() {
-    std::cout << "=========================\n";
+    std::cout << "===============\n";
     std::cout << "Ejecutando 3Sum\n";
+    std::cout << "===============\n";
+
     Solution s;
     std::vector<int> nums = {-1, 0, 1, 2, -1, -4};
     std::vector<std::vector<int>> resultadoB= s.threeSumBrute(nums);
