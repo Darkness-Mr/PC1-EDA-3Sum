@@ -73,3 +73,17 @@ Resultado threeSum:
 [-1, 0, 1]
 
 ./main_Os  0,00s user 0,00s system 1% cpu 0,286 total
+
+
+* Ejecutando el Benchmark
+Ejecuto: g++ -std=c++17 -I src -O2 bench/benchmark.cpp src/solution.cpp -o bench_run
+
+con ello obtenemos bench_run y lo ejecutamos con: ./bench_run y finalmente tenemos 
+
+--- Iniciando Benchmark de 3Sum ---
+Tamano de entrada (n) = 500 elementos.
+
+Tiempo Fuerza Bruta O(n^3): 439.264 ms
+Tiempo Solucion Optima O(n^2): 0.44732 ms
+
+Mejora de rendimiento: La solucion optima es 981.99 veces mas rapida.
