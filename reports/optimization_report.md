@@ -1,4 +1,5 @@
 ### Reporte de Benchmark y Sanitización
+
 * **Resultados de Compilación (-O0, -Og, -O2, -Os):**
 
 * Compilamos cada version de optimización:
@@ -73,7 +74,6 @@ Resultado threeSum:
 [-1, 0, 1]
 
 ./main_Os  0,00s user 0,00s system 1% cpu 0,286 total
-
 
 * Ejecutando el Benchmark
 Ejecuto: g++ -std=c++17 -I src -O2 bench/benchmark.cpp src/solution.cpp -o bench_run
