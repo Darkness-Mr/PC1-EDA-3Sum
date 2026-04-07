@@ -90,43 +90,53 @@
    - Sin reserve: El vector debe realizar costosas reasignaciones dinámicas cuando se queda sin capacidad (pide nueva memoria, copia los datos y borra la anterior) .Con reserve: Se pre-asigna toda la memoria necesaria en un solo bloque desde el inicio. Esto elimina las reasignaciones y hace que la inserción de datos sea significativamente más rápida.
 
 3. **En bench_vector_ops.cpp, ¿por qué push_back, insert(begin()) e insert(middle) no cuestan lo mismo?**
-  - La diferencia de costos radica en el desplazamiento de elementos en la memoria contigua: , por ejemplo push_back tiene un costo de $O(1)$ porque solo añade el elemento al final del bloque sin mover los otros , insert(begin()) cuesta $O(n)$ porque obliga a desplazar absolutamente todos los elementos una posición hacia la derecha y insert(middle) tiene un costo intermedio, ya que solo es necesario desplazar la mitad de los elementos. 
+
+   - La diferencia de costos radica en el desplazamiento de elementos en la memoria contigua: , por ejemplo push_back tiene un costo de $O(1)$ porque solo añade el elemento al final del bloque sin mover los otros , insert(begin()) cuesta $O(n)$ porque obliga a desplazar absolutamente todos los elementos una posición hacia la derecha y insert(middle) tiene un costo intermedio, ya que solo es necesario desplazar la mitad de los elementos.
 
 4. **En bench_cache_effects.cpp, ¿qué intuición deja sobre localidad de memoria?**
-  - El benchmark evidencia la importancia de la localidad espacial. El recorrido secuencial de un vector es muy rápido porque sus datos están contiguos, lo que permite que la memoria caché del procesador los precargue eficientemente. En contraste, el acceso aleatorio y las listas (std::list) son lentos porque acceden a direcciones de memoria dispersas, provocando constantes fallos en la caché.
+
+   - El benchmark evidencia la importancia de la localidad espacial. El recorrido secuencial de un vector es muy rápido porque sus datos están contiguos, lo que permite que la memoria caché del procesador los precargue eficientemente. En contraste, el acceso aleatorio y las listas (std::list) son lentos porque acceden a direcciones de memoria dispersas, provocando constantes fallos en la caché.
 
 #### Bloque 5
 
 1. **Según Ejercicios0.md, ¿cuál es el orden correcto antes de optimizar?**
-  - Primero, elegir bien el algoritmo.
+
+   - Primero, elegir bien el algoritmo.
     Segundo, verificar que el programa sea correcto.
     Tercero, medir el rendimiento.
     Cuarto y último, explorar optimizaciones más avanzadas del compilador.
 
 2. **¿Qué quiere mostrar stl_optimizacion_demostracion.cpp con reserve, nth_element, partial_sort y lower_bound?**
-  - El código demuestra que elegir el algoritmo correcto de la STL (Standard Template Library) tiene mayor impacto en el rendimiento que realizar microajustes manuales. 
+
+   - El código demuestra que elegir el algoritmo correcto de la STL (Standard Template Library) tiene mayor impacto en el rendimiento que   realizar microajustes manuales. 
     reserve: Reduce las costosas realocaciones de memoria y copias de elementos.
     nth_element y partial_sort: Optimizan la obtención de medianas o Top-K, evitando el alto costo computacional de ordenar todo el arreglo.
     lower_bound: Permite realizar consultas en tiempo logarítmico aprovechando la excelente localidad de memoria de un vector previamente ordenado.
 
 3. **¿Qué tipo de evidencia puede producir resolver_ejercicios0_v4.2.sh?**
-  - Archivos ejecutables, archivos de salida estándar (.out / .stdout.txt) y de error (.err / .stderr.txt).
+
+    - Archivos ejecutables, archivos de salida estándar (.out / .stdout.txt) y de error (.err / .stderr.txt).
     Logs detallados de la compilación (.compile.log) que registran warnings e iteraciones del compilador.
     Un reporte estructurado en formato Markdown (reporte_ejercicios0.md) que tabula métricas clave como el tiempo de ejecución en segundos, el tamaño del binario en bytes y los códigos de estado de salida.
 
 4. **¿Qué limitaciones de entorno menciona INSTRUCCIONES_Ejercicios0_v4.2.md?**
-  - Las herramientas de desinfección (ASan, UBSan o TSan) pueden presentar fallos al momento de enlazar (linkear).
+
+    Las herramientas de desinfección (ASan, UBSan o TSan) pueden presentar fallos al momento de enlazar (linkear).
     La herramienta de cobertura gcov puede necesitar configuraciones adicionales según el sistema.
     La herramienta de profiling gprof suele fallar o ser incapaz de generar perfiles de rendimiento útiles en estos entornos.
+
 5. **¿Por qué esta parte no reemplaza la discusión de correctitud de Semana1?**
-  - Porque la correctitud lógica de un programa es un prerrequisito innegociable antes de aplicar cualquier optimización. El documento es explícito al advertir que los flags de optimización agresiva (como -O3) y el uso de funciones avanzadas de la STL no sustituyen la necesidad de "una prueba bien hecha". Un algoritmo que se ejecuta extremadamente rápido, pero arroja resultados incorrectos, carece de validez.
+
+   - Porque la correctitud lógica de un programa es un prerrequisito innegociable antes de aplicar cualquier optimización. El documento es explícito al advertir que los flags de optimización agresiva (como -O3) y el uso de funciones avanzadas de la STL no sustituyen la necesidad de "una prueba bien hecha". Un algoritmo que se ejecuta extremadamente rápido, pero arroja resultados incorrectos, carece de validez.
 
 #### Bloque 6
 
 **¿Qué cambia cuando pasamos de defender correctitud básica en Semana1 a comparar implementaciones con evidencia experimental?**
-  - Al pasar a la evidencia experimental, la especificación se vuelve más estricta porque el código debe prepararse para integrarse con herramientas de medición y benchmarks. La correctitud deja de ser la meta final y pasa a ser un requisito mínimo, ya que de nada sirve que el código vuele si bota un resultado incorrecto. En cuanto al costo, pasamos de contar operaciones teóricas a medir microsegundos reales, donde nos damos cuenta de que la representación en memoria importa muchísimo; por ejemplo, tener datos contiguos le facilita la vida a la memoria caché y acelera el programa más que cualquier truco lógico manual. Por último, queda una advertencia metodológica clave: medir tiempos en una PC es engañoso por el ruido del sistema operativo, así que siempre hay que mantener constantes las variables y repetir las pruebas varias veces para obtener promedios confiables.
+
+     - Al pasar a la evidencia experimental, la especificación se vuelve más estricta porque el código debe prepararse para integrarse con herramientas de medición y benchmarks. La correctitud deja de ser la meta final y pasa a ser un requisito mínimo, ya que de nada sirve que el código vuele si bota un resultado incorrecto. En cuanto al costo, pasamos de contar operaciones teóricas a medir microsegundos reales, donde nos damos cuenta de que la representación en memoria importa muchísimo; por ejemplo, tener datos contiguos le facilita la vida a la memoria caché y acelera el programa más que cualquier truco lógico manual. Por último, queda una advertencia metodológica clave: medir tiempos en una PC es engañoso por el ruido del sistema operativo, así que siempre hay que mantener constantes las variables y repetir las pruebas varias veces para obtener promedios confiables.
 
 #### Autoevaluación breve
+
 - **Qué podemos defender con seguridad:** La diferencia entre eficiencia y correctitud, y por qué los algoritmos de "divide y vencerás" son superiores a la fuerza bruta.
 - **Qué todavía confundimos:** A veces la implementación exacta de ciertos ADTs complejos en C++ puede ser retadora por la sintaxis de punteros.
 - **Qué evidencia usaríamos en una sustentación:** Los contadores de operaciones y las gráficas de tiempo de ejecución de las demos, ya que muestran el comportamiento real del código frente al crecimiento de $n$.
